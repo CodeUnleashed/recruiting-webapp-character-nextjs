@@ -15,6 +15,16 @@ export default function Home() {
         setCharacters(updatedCharacters);
     }
 
+    function resetCharacters() {
+        const updatedCharacters = [...characters];
+        console.log(characters);
+        characters.map((character, _) => (
+            character.attributes.map((attr) => attr.value = 10),
+            character.skills.map((skill) => skill.value = 0)            
+        ));
+        setCharacters(updatedCharacters);
+    }
+
     return (
         <main>
             <nav className="flex flex-col text-center">
@@ -23,7 +33,7 @@ export default function Home() {
                 </header>
                 <section className="flex flex-row justify-center space-x-4 w-100">
                     <button className="btn btn-blue" onClick={() => {
-                        setCharacters([
+                        setCharacters(characters => [
                             ...characters,
                             {
                                 attributes: ATTRIBUTE_LIST.map(name => ({name, value: 10})),
@@ -31,7 +41,7 @@ export default function Home() {
                             }
                         ]);
                     }}>Add New Character</button>
-                    <button className="btn btn-blue">Reset All Characters</button>
+                    <button className="btn btn-blue" onClick={resetCharacters}>Reset All Characters</button>
                     <button className="btn btn-blue">Save All Characters</button>
                 </section>
             </nav>
@@ -53,7 +63,8 @@ export default function Home() {
                     <CharacterSheet
                         character={character}
                         index={index}
-                        modifyCharacter={(propertyName, propertyItemName, propertyItemValue) => modifyCharacter(index, propertyName, propertyItemName, propertyItemValue)}/>
+                        modifyCharacter={(propertyName, propertyItemName, propertyItemValue) => modifyCharacter(index, propertyName, propertyItemName, propertyItemValue)}
+                    />
                 ))}
             </div>
         </main>

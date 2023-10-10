@@ -1,5 +1,6 @@
 import { CLASS_LIST, SKILL_LIST } from "../consts"
 import AttributesList from "./attributeslist"
+import ClassList from "./classlist"
 import SkillsList from "./skillslist"
 
 export default function CharacterSheet ({ character, index, modifyCharacter}) {
@@ -34,9 +35,7 @@ export default function CharacterSheet ({ character, index, modifyCharacter}) {
                         <h1 className="text-2xl font-bold">Classes</h1>
                     </header>
                     <div className="flex flex-col items-center">
-                        {Object.entries(CLASS_LIST).map(([key, value]) => (
-                            <p>{key}</p>
-                        ))}
+                        <ClassList />
                     </div>
                 </div>
                 <div className="character-detail-section">
