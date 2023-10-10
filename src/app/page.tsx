@@ -7,12 +7,11 @@ import { ATTRIBUTE_LIST, SKILL_LIST } from './consts';
 export default function Home() {
     const [characters, setCharacters] = useState([]);
 
-    function modifyCharacter(index, attributeName, attributeValue) {
+    function modifyCharacter(index, propertyName, propertyItemName, propertyItemValue) {
         const updatedCharacters = [...characters];
         const character = updatedCharacters[index];
-        const attrIndex = character.attributes.findIndex((element) => element.attributeName === attributeName);
-        character.attributes[attrIndex].value = attributeValue;
-        console.log(character);
+        const propertyItemIndex = character[propertyName].findIndex((element) => element.name === propertyItemName);
+        character[propertyName][propertyItemIndex].value = propertyItemValue;
         setCharacters(updatedCharacters);
     }
 
@@ -27,7 +26,7 @@ export default function Home() {
                         setCharacters([
                             ...characters,
                             {
-                                attributes: ATTRIBUTE_LIST.map(attributeName => ({attributeName, value: 10})),
+                                attributes: ATTRIBUTE_LIST.map(name => ({name, value: 10})),
                                 skills: SKILL_LIST.map(skill => ({...skill, value: 0}))
                             }
                         ]);
@@ -54,7 +53,7 @@ export default function Home() {
                     <CharacterSheet
                         character={character}
                         index={index}
-                        modifyCharacter={(attributeName, attributeValue) => modifyCharacter(index, attributeName, attributeValue)}/>
+                        modifyCharacter={(propertyName, propertyItemName, propertyItemValue) => modifyCharacter(index, propertyName, propertyItemName, propertyItemValue)}/>
                 ))}
             </div>
         </main>

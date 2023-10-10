@@ -3,10 +3,10 @@ export default function AttributesList ({ attributes, index, modifyCharacter }) 
 
     function updateValue(attribute, newValue) {
         if (newValue > 20) {
-            alert("Character " + (index + 1) + "'s " + attribute.attributeName + " has reached the maximum 20 points.")
+            alert("Character " + (index + 1) + "'s " + attribute.name + " has reached the maximum 20 points.")
             return;
         } else if (newValue < 1) {
-            alert("Character " + (index + 1) + "'s " + attribute.attributeName + " has reached the minimum 1 point.")
+            alert("Character " + (index + 1) + "'s " + attribute.name + " has reached the minimum 1 point.")
             return;
         } else if (newValue > attribute.value && total() === 70) {
             alert("Character " + (index + 1) + " has reached the maximum 70 points.");
@@ -14,7 +14,7 @@ export default function AttributesList ({ attributes, index, modifyCharacter }) 
         }
 
         console.log(newValue);
-        modifyCharacter(attribute.attributeName, newValue)
+        modifyCharacter("attributes", attribute.name, newValue)
     }
     
     function getModifier(attribute) {
@@ -26,7 +26,7 @@ export default function AttributesList ({ attributes, index, modifyCharacter }) 
             <h1>Total: {total()}</h1>
             {attributes.map((attribute) => (
                  <div>
-                    {attribute.attributeName}: {attribute.value}(Modifier: {getModifier(attribute)})
+                    {attribute.name}: {attribute.value}(Modifier: {getModifier(attribute)})
                     <button onClick={() => updateValue(attribute, attribute.value + 1)} className="btn-sm btn-light-gray">+</button>
                     <button onClick={() => updateValue(attribute, attribute.value - 1)} className="btn-sm btn-light-gray">-</button>
                 </div>

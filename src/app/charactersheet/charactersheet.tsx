@@ -1,5 +1,6 @@
 import { CLASS_LIST, SKILL_LIST } from "../consts"
 import AttributesList from "./attributeslist"
+import SkillsList from "./skillslist"
 
 export default function CharacterSheet ({ character, index, modifyCharacter}) {
     return (
@@ -43,9 +44,7 @@ export default function CharacterSheet ({ character, index, modifyCharacter}) {
                         <h1 className="text-2xl font-bold">Skills</h1>
                     </header>
                     <div>
-                        {SKILL_LIST.map((skill) => (
-                            <p>{skill.name}: [TODO: NUM](Modifier: {skill.attributeModifier}) [TODO: NUM] [TODO: PLUS-MINUS BTNS]total: [TODO: NUM]</p>
-                        ))}
+                        <SkillsList attributes={character.attributes} skills={character.skills} index={index} modifyCharacter={modifyCharacter}/>
                     </div>
                 </div>
             </div>

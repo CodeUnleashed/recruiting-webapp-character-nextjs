@@ -10,3 +10,7 @@ The reason why I chose these tools are because they have several benefits over r
 1. Server side rendering
 1. Functional CSS
 1. Typehinting
+
+# Future Optimization
+1. I would start caching the attribute modifier
+    * Right now, I just calculate it when needed and it isn't too often, so we're fine. However, caching would be beneficial in the long run.
