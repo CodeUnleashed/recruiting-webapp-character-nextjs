@@ -2,9 +2,13 @@ export default function AttributesList ({ attributes, index, modifyCharacter }) 
     const total = () => attributes.reduce((total, attr) => total + attr.value, 0);
 
     function updateValue(attribute, newValue) {
-        // When there's an increase
-        console.log("Attr Value: " + attribute.value + ", New Value: " + newValue);
-        if (newValue > attribute.value && total() === 70) {
+        if (newValue > 20) {
+            alert("Character " + (index + 1) + "'s " + attribute.attributeName + " has reached the maximum 20 points.")
+            return;
+        } else if (newValue < 1) {
+            alert("Character " + (index + 1) + "'s " + attribute.attributeName + " has reached the minimum 1 point.")
+            return;
+        } else if (newValue > attribute.value && total() === 70) {
             alert("Character " + (index + 1) + " has reached the maximum 70 points.");
             return;
         }
